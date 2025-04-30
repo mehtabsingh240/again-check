@@ -17,7 +17,6 @@
       color: #333;
     }
 
-    /* Header */
     header {
       background-color: #333;
       color: white;
@@ -41,6 +40,7 @@
       justify-content: space-between;
       padding: 10px 20px;
       flex-wrap: wrap;
+      position: relative;
     }
 
     .navbar .logo {
@@ -59,7 +59,7 @@
       font-style: italic;
     }
 
-    .navbar .menu {
+    .menu {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -67,18 +67,27 @@
       margin-top: 10px;
     }
 
-    .navbar .menu a {
+    .menu a {
       color: white;
       text-decoration: none;
       font-size: 14px;
     }
 
-    .navbar .menu a:hover {
+    .menu a:hover {
       text-decoration: underline;
     }
 
-    .navbar .menu .search-icon {
+    .search-icon {
       font-size: 18px;
+      cursor: pointer;
+      color: white;
+    }
+
+    /* Burger Menu Icon */
+    .menu-toggle {
+      display: none;
+      font-size: 26px;
+      color: white;
       cursor: pointer;
     }
 
@@ -168,7 +177,7 @@
       font-size: 0.95rem;
     }
 
-    /* Footer Section */
+    /* Footer */
     footer {
       background-color: #333;
       color: white;
@@ -194,16 +203,30 @@
         width: 100%;
       }
 
+      .menu-toggle {
+        display: block;
+      }
+
+      .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: darkgoldenrod;
+        padding: 10px 0;
+      }
+
+      .menu.active {
+        display: flex;
+      }
+
+      .menu a {
+        padding: 10px 20px;
+        width: 100%;
+      }
+
       .navbar {
         flex-direction: column;
         align-items: flex-start;
-      }
-
-      .navbar .menu {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        margin-top: 10px;
       }
 
       .navbar .menu a {
@@ -228,12 +251,14 @@
 </head>
 <body>
 
+  <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">
       <img src="images/logo.png" alt="Logo" />
       <div class="logo-text">choose your career</div>
     </div>
-    <div class="menu">
+    <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+    <div class="menu" id="navbar-links">
       <a href="index.html">Home</a>
       <a href="sci.html">Science</a>
       <a href="com.html">Commerce</a>
@@ -252,7 +277,7 @@
     </div>
   </header>
 
-  <!-- Stream Intro Section -->
+  <!-- Stream Intro -->
   <section class="stream-intro">
     <div class="container">
       <h2>Introduction to Arts Stream</h2>
@@ -260,7 +285,7 @@
     </div>
   </section>
 
-  <!-- Career Options Section -->
+  <!-- Career Options -->
   <section class="career-options">
     <div class="container">
       <h2>Career Options After Arts</h2>
@@ -324,7 +349,7 @@
     </div>
   </section>
 
-  <!-- Popular Courses Section -->
+  <!-- Popular Courses -->
   <section class="popular-courses">
     <div class="container">
       <h2>Popular Courses in Arts</h2>
@@ -345,12 +370,22 @@
     </div>
   </section>
 
-  <!-- Footer Section -->
+  <!-- Footer -->
   <footer>
     <div class="footer-content">
       <p>&copy; 2025 Career Guidance. All Rights Reserved.</p>
     </div>
   </footer>
+
+  <!-- JavaScript for Burger Menu -->
+  <script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('navbar-links');
+
+    mobileMenu.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
 
 </body>
 </html>
